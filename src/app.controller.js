@@ -4,7 +4,7 @@ import { messageRouter } from "./modules/messages/message.controller.js";
 import { userRouter } from "./modules/users/user.controller.js";
 import cors from "cors"
 import { rateLimit } from "express-rate-limit"
-export default function bootstrap({ app, express }) {
+export default async function bootstrap({ app, express }) {
   const whitelist = ["http://localhost:4200", undefined];
   const corsOptions = {
     origin: function (origin, callback) {
@@ -32,7 +32,7 @@ export default function bootstrap({ app, express }) {
   app.use(cors(corsOptions));
 
   // check connection db
-  checkConnectionDB();
+await  checkConnectionDB();
 
 
   // parse json
